@@ -11,10 +11,12 @@ class PostPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) =>
-          PostsBloc(httpClient: http.Client())..add(FetchPostsEvent()),
-      child: PostView(),
+    return Scaffold(
+      body: BlocProvider(
+        create: (context) =>
+            PostBloc(httpClient: http.Client())..add(FetchPostsEvent()),
+        child: const PostView(),
+      ),
     );
   }
 }

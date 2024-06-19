@@ -24,7 +24,7 @@ class _PostViewState extends State<PostView> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<PostsBloc, PostState>(
+    return BlocBuilder<PostBloc, PostState>(
       builder: (context, state) {
         switch (state.status) {
           case PostsStatus.failure:
@@ -60,7 +60,7 @@ class _PostViewState extends State<PostView> {
   }
 
   void _onScroll() {
-    if (_isBottom) context.read<PostsBloc>().add(FetchPostsEvent());
+    if (_isBottom) context.read<PostBloc>().add(FetchPostsEvent());
   }
 
   bool get _isBottom {
